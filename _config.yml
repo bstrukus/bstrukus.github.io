@@ -1,3 +1,12 @@
-theme: jekyll-theme-minimal
-title: Octocat's homepage
-description: Bookmark this to keep an eye on my project updates!
+theme: jekyll-theme-cayman
+title: Ben Strukus
+# Shown under the name in the banner. Placeholder until we settle the hook line.
+description: Improviser. Actor. Disembodied voice.
+
+# Contact settings used by index.md. Leave blank to hide that piece.
+# formspree_id is the part after https://formspree.io/f/ (from the Formspree dashboard).
+formspree_id: myegzdkb
+contact_email:
+
+exclude:
+  - README.md
