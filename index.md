@@ -52,11 +52,11 @@ I came to performing late, through an improv class in 2023, and fell hard for it
 ## Contact
 
 {% if site.formspree_id %}
-<form action="https://formspree.io/f/{{ site.formspree_id }}" method="POST">
+<form class="contact-form" action="https://formspree.io/f/{{ site.formspree_id }}" method="POST">
   <p><label>Name<br><input type="text" name="name" required></label></p>
   <p><label>Email<br><input type="email" name="email" required></label></p>
   <p><label>Message<br><textarea name="message" rows="5" required></textarea></label></p>
-  <p><button type="submit" class="btn">Send</button></p>
+  <p><button type="submit">Send</button></p>
 </form>
 {% endif %}
 {% if site.contact_email %}
