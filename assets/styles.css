@@ -1,0 +1,335 @@
+/* ------------------------------------------------------------------
+   DESIGN TOKENS — change these few values to restyle the whole site
+   ------------------------------------------------------------------ */
+:root {
+  --bg:        #14110f;   /* page background          */
+  --surface:   #1e1a17;   /* cards, form fields       */
+  --text:      #f2ede5;   /* body text                */
+  --muted:     #a49c92;   /* secondary text           */
+  --accent:    #d9a566;   /* links, buttons, accents  */
+  --line:      #322c27;   /* hairline borders         */
+
+  --serif: "Fraunces", Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --measure: 62ch;        /* max width of a paragraph */
+  --wide:    1080px;      /* max width of the layout  */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, audio { max-width: 100%; display: block; }
+
+a { color: var(--accent); }
+
+/* ---------- Layout helpers ---------- */
+.wrap { width: min(100% - 2.5rem, var(--wide)); margin-inline: auto; }
+
+section {
+  padding-block: clamp(3.5rem, 9vw, 6rem);
+  scroll-margin-top: 4.5rem;      /* so the sticky nav doesn't cover headings */
+  border-top: 1px solid var(--line);
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; margin: 0; }
+
+h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin-bottom: 1.75rem;
+}
+
+p { max-width: var(--measure); }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.6rem;
+}
+
+/* ---------- Nav ---------- */
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+nav .wrap {
+  display: flex; align-items: center; gap: 1.5rem;
+  min-height: 3.5rem;
+  overflow-x: auto;              /* nav scrolls sideways on narrow phones */
+  scrollbar-width: none;
+}
+nav .wrap::-webkit-scrollbar { display: none; }
+nav a {
+  color: var(--muted); text-decoration: none;
+  font-size: 0.875rem; white-space: nowrap;
+  padding-block: 0.25rem;
+}
+nav a:hover, nav a:focus-visible { color: var(--text); }
+nav .brand { color: var(--text); font-family: var(--serif); font-size: 1rem; margin-right: auto; }
+
+/* ---------- Hero ---------- */
+.hero { border-top: 0; padding-block: clamp(3rem, 8vw, 5.5rem); }
+.hero-grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 760px) {
+  .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 8vw, 4.5rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.tagline {
+  font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+  color: var(--muted);
+  max-width: 34ch;
+  margin: 0 0 2rem;
+}
+
+/* Headshot: the frame shows a placeholder until assets/headshot.jpg exists */
+.headshot {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.headshot::after {
+  content: "headshot.jpg";
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em;
+}
+.headshot img {
+  position: relative;            /* sits on top of the placeholder label */
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: 3px;
+  font-size: 0.925rem; font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #191410;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s ease;
+}
+.btn:hover { opacity: 0.87; }
+.btn-ghost { background: transparent; color: var(--accent); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* The .reel, .specs, .credits, and .gallery rules below style sections that
+   are currently commented out in the body. They look like dead CSS — they're
+   not, they're waiting. Leave them; uncommenting a section is then the
+   only step. */
+
+/* ---------- Demo reels ---------- */
+.reels { display: grid; gap: 1rem; }
+.reel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.25rem 1.4rem;
+}
+.reel h3 { font-size: 1.15rem; }
+.reel p { font-size: 0.9rem; color: var(--muted); margin: 0.25rem 0 1rem; }
+.reel audio { width: 100%; }
+
+/* ---------- Studio specs ---------- */
+.specs {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.25rem 1.4rem;
+  margin-top: 1rem;
+}
+.specs h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.specs p { font-size: 0.9rem; margin: 0 0 1rem; max-width: var(--measure); }
+.specs ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 0.3rem 0.7rem;
+  font-size: 0.82rem; color: var(--muted);
+}
+/* Middot between items, but not trailing the last one */
+.specs li:not(:last-child)::after { content: "·"; margin-left: 0.7rem; opacity: 0.5; }
+
+/* ---------- Resume ---------- */
+.credits { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.95rem; }
+.credits th {
+  text-align: left; font-weight: 500; font-size: 0.72rem;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
+  padding-bottom: 0.6rem; border-bottom: 1px solid var(--line);
+}
+.credits td { padding: 0.8rem 1.25rem 0.8rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.credits td:last-child { color: var(--muted); padding-right: 0; }
+.table-scroll { overflow-x: auto; }
+
+/* ---------- Gallery ---------- */
+.gallery {
+  display: grid;
+  gap: 0.85rem;
+  /* 150px minimum keeps two columns on a phone instead of one tall stack */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.gallery figure {
+  margin: 0; position: relative;
+  aspect-ratio: 3 / 4;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.gallery figure::after {
+  content: attr(data-label);
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-size: 0.75rem; color: var(--muted);
+}
+.gallery img { position: relative; width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Contact form ---------- */
+form { max-width: 34rem; display: grid; gap: 1.1rem; }
+label { display: block; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+input, textarea, select {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+textarea { resize: vertical; min-height: 8rem; }
+
+/* Honeypot — invisible to humans, tempting to bots. Do not remove. */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding-block: 2.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Respect people who get motion sick */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* ==================================================================
+   NOTES
+   Everything below styles the Jekyll-built pages under /notes/.
+   The homepage doesn't use any of it.
+   ================================================================== */
+
+/* The first block on a built page sits right under the sticky nav, and
+   its top border would double up with the nav's bottom border. */
+body > section:first-of-type,
+body > .note:first-of-type { border-top: 0; }
+
+/* ---------- Notes index ---------- */
+.note-list { list-style: none; margin: 0; padding: 0; }
+.note-list li {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: 0.25rem 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.note-list li:first-child { border-top: 1px solid var(--line); }
+.note-list a {
+  font-family: var(--serif); font-size: 1.15rem;
+  text-decoration: none; margin-right: auto;
+}
+.note-list a:hover { text-decoration: underline; }
+.note-list time { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+
+/* ---------- A single note ---------- */
+.note {
+  padding-block: clamp(3rem, 8vw, 5rem);
+  border-top: 1px solid var(--line);
+}
+.note .eyebrow a { text-decoration: none; }
+.note .eyebrow a:hover { text-decoration: underline; }
+.note h1 {
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  letter-spacing: -0.015em;
+  max-width: 24ch;
+}
+.note-date { color: var(--muted); font-size: 0.85rem; margin: 0.6rem 0 2.5rem; }
+
+/* ---------- Markdown output ----------
+   These rules style HTML that Jekyll generates from your .md files, so
+   there's no markup of ours to hang classes on. Bare element selectors,
+   scoped to .note so they can't leak onto the homepage. */
+.note h2 { font-size: clamp(1.35rem, 3vw, 1.6rem); margin: 2.5rem 0 0.85rem; }
+.note h3 { font-size: 1.1rem; margin: 2rem 0 0.6rem; }
+.note p  { margin: 0 0 1.15rem; }
+
+.note ul, .note ol { max-width: var(--measure); margin: 0 0 1.15rem; padding-left: 1.3rem; }
+.note li { margin-bottom: 0.4rem; }
+
+.note blockquote {
+  margin: 1.75rem 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+  font-style: italic;
+}
+.note blockquote p:last-child { margin-bottom: 0; }
+
+.note code {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.86em;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+.note pre {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;          /* long lines scroll instead of breaking layout */
+  max-width: 100%;
+  margin: 0 0 1.5rem;
+}
+.note pre code { background: none; border: 0; padding: 0; font-size: 0.85rem; }
+
+.note img { border-radius: 3px; margin: 1.5rem 0; }
+.note hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+.note a { text-underline-offset: 2px; }
