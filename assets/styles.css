@@ -192,6 +192,24 @@ nav .brand { color: var(--text); font-family: var(--serif); font-size: 1rem; mar
 .credits td:last-child { color: var(--muted); padding-right: 0; }
 .table-scroll { overflow-x: auto; }
 
+/* Grouped credits list (live). Headings match the table's column headers
+   above, so switching to the table later won't change the section's look. */
+.credit-groups {
+  display: grid;
+  gap: 1.75rem 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 2.25rem;
+}
+.credit-groups h3 {
+  font-family: var(--sans); font-weight: 500; font-size: 0.72rem;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
+  padding-bottom: 0.6rem; border-bottom: 1px solid var(--line);
+  margin-bottom: 0.6rem;
+}
+.credit-groups ul { list-style: none; margin: 0; padding: 0; font-size: 0.95rem; }
+.credit-groups li { padding: 0.35rem 0; }
+.credit-groups li span { display: block; font-size: 0.85rem; color: var(--muted); }
+
 /* ---------- Gallery ---------- */
 .gallery {
   display: grid;
