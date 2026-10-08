@@ -7,7 +7,7 @@ The homepage is one HTML file; Markdown notes are built by GitHub.
 index.html          the homepage — plain HTML, NOT processed by Jekyll
 assets/styles.css   all styling for every page
 assets/             headshot, resume PDF, reels and gallery photos later
-_config.yml         Jekyll settings (no theme — see below)
+_config.yml         Jekyll settings (no theme named — see below)
 _layouts/           page shell + note template, used only by /notes/
 _posts/             your notes, as YYYY-MM-DD-slug.md
 notes/index.html    the notes listing page
@@ -75,9 +75,13 @@ matter, so Jekyll treats it as a static asset — exactly like the headshot. It
 cannot be altered by a template change, and it renders locally identically to
 how it ships.
 
-**2. There is no default theme.** Themes are opt-in via a `theme:` line in
-`_config.yml`. This config deliberately has none, so Jekyll injects no CSS or
-markup of its own. All styling comes from `assets/styles.css`, which you own.
+**2. Your layouts beat the theme's.** This config deliberately has no
+`theme:` line. On GitHub Pages that doesn't mean *no* theme: with none named,
+Pages quietly falls back to its default, Primer. That's harmless here. A
+layout in your own `_layouts/` takes precedence over a theme layout with the
+same name, and `index.html` is never templated, so nothing on the site uses
+Primer. Its one visible trace is an unused `/assets/css/style.css` in the
+build output. All styling comes from `assets/styles.css`, which you own.
 (The Octocat look this repo shipped with originally came from a
 `theme: jekyll-theme-minimal` line that used to be in that file.)
 
