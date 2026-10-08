@@ -9,8 +9,12 @@
      copies it verbatim. That's intentional: the homepage can't be broken
      by a template change.
 
-     {{ ... }} is Liquid, Jekyll's template syntax. It's the only templating
-     on the site, and this is very nearly all of it. -->
+     The double-curly-brace and curly-percent tags below are Liquid, Jekyll's
+     template syntax. It's the only templating on the site, and this is very
+     nearly all of it. Don't write those braces literally in a comment here:
+     Liquid runs before HTML comments mean anything, so it would try to
+     evaluate them. -->
+
 
 <title>{% if page.title %}{{ page.title }} &middot; {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
 <meta name="description" content="{{ page.description | default: site.description }}">
