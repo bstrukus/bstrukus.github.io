@@ -1,12 +1,40 @@
-theme: jekyll-theme-cayman
+# ---------------------------------------------------------------------
+# Minimal Jekyll config.
+#
+# There is deliberately NO `theme:` line. Jekyll has no default styling,
+# so with no theme named it injects nothing — the site is styled entirely
+# by assets/styles.css. (The Octocat look this repo had originally came
+# from a `theme: jekyll-theme-minimal` line that used to live here.)
+#
+# Jekyll only processes files that begin with a `---` front matter block.
+# index.html has none, so it is copied to the output byte-for-byte and is
+# never templated. Jekyll's only job here is turning _posts/*.md into
+# pages under /notes/.
+# ---------------------------------------------------------------------
+
 title: Ben Strukus
-# Shown under the name in the banner. Placeholder until we settle the hook line.
-description: Improviser. Actor. Disembodied voice.
+description: >-
+  Seattle-based improviser, actor, and voice over artist.
+url: https://www.benstrukus.com
 
-# Contact settings used by index.md. Leave blank to hide that piece.
-# formspree_id is the part after https://formspree.io/f/ (from the Formspree dashboard).
-formspree_id: myegzdkb
-contact_email:
+# _posts/2026-09-08-mic-technique.md  ->  /notes/mic-technique/
+permalink: /notes/:title/
 
+# Every post gets the note layout automatically, so a new note's front
+# matter only needs a title line. One less thing to remember.
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: note
+
+# Generates /sitemap.xml automatically, including every note.
+# robots.txt already points at it. Supported natively by GitHub Pages.
+plugins:
+  - jekyll-sitemap
+
+# Repo docs shouldn't get published as pages.
 exclude:
   - README.md
+  - assets/README.md

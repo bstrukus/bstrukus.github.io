@@ -1,0 +1,22 @@
+---
+layout: default
+title: Notes
+description: Notes on voice over, improv, and making things.
+---
+<section class="wrap">
+  <p class="eyebrow">Writing</p>
+  <h2>Notes</h2>
+
+  {% if site.posts.size == 0 %}
+    <p>Nothing here yet.</p>
+  {% else %}
+    <ul class="note-list">
+      {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</section>

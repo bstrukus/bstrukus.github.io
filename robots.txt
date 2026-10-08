@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Keep the resume PDF out of search results.
+# Note: this is a request, not a wall. Well-behaved crawlers (Google, Bing)
+# honor it; scrapers ignore it entirely. See README.md.
+Disallow: /assets/resume.pdf
+
+Sitemap: https://www.benstrukus.com/sitemap.xml
