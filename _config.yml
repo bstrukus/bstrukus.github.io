@@ -1,10 +1,14 @@
 # ---------------------------------------------------------------------
 # Minimal Jekyll config.
 #
-# There is deliberately NO `theme:` line. Jekyll has no default styling,
-# so with no theme named it injects nothing — the site is styled entirely
-# by assets/styles.css. (The Octocat look this repo had originally came
-# from a `theme: jekyll-theme-minimal` line that used to live here.)
+# There is deliberately NO `theme:` line, but that doesn't mean no theme:
+# with none named, GitHub Pages falls back to its default, Primer. That's
+# harmless here. Our own _layouts/ take precedence over the theme's, and
+# index.html is never templated, so nothing on the site uses Primer. Its
+# one visible trace is an unused /assets/css/style.css in the build
+# output. All styling comes from assets/styles.css.
+# (The Octocat look this repo had originally came from a
+# `theme: jekyll-theme-minimal` line that used to live here.)
 #
 # Jekyll only processes files that begin with a `---` front matter block.
 # index.html has none, so it is copied to the output byte-for-byte and is
@@ -28,6 +32,12 @@ defaults:
       type: posts
     values:
       layout: note
+  # Keep the resume out of the generated sitemap. robots.txt asks crawlers
+  # not to index it, and listing it in the sitemap would say the opposite.
+  - scope:
+      path: assets/resume.pdf
+    values:
+      sitemap: false
 
 # Generates /sitemap.xml automatically, including every note.
 # robots.txt already points at it. Supported natively by GitHub Pages.
