@@ -179,50 +179,40 @@
     <p class="eyebrow">Credits</p>
     <h2>Resume</h2>
 
-    <!-- ==================== CREDITS TABLE — PARKED ====================
-         TO SWITCH ON: once you have four or five voice credits, delete this
-         opening line and the closing line below, fill in the rows, and drop
-         the Voice group from the list underneath so credits aren't listed
-         twice.
-
+    <!-- Same layout as the PDF resume: Project / Role / Company, one table
+         per heading. Only current work is listed here; selected credits,
+         training, and special skills live in the PDF. Add a row by copying
+         a <tr> line. Ongoing runs end in "present", so they only need
+         editing when a run ends. On phones each row stacks into a small
+         block instead of scrolling sideways (see "Resume" in
+         assets/styles.css). -->
+    <h3 class="credits-heading">Voiceover</h3>
     <div class="table-scroll">
       <table class="credits">
         <thead>
-          <tr><th>Project</th><th>Role</th><th>Studio / Client</th></tr>
+          <tr><th>Project</th><th>Role</th><th>Type / Studio</th></tr>
         </thead>
         <tbody>
-          <tr><td>Project Name</td><td>Role / Voice</td><td>Client or Studio</td></tr>
-          <tr><td>Project Name</td><td>Role / Voice</td><td>Client or Studio</td></tr>
-          <tr><td>Project Name</td><td>Role / Voice</td><td>Client or Studio</td></tr>
+          <tr><td><cite>Sail Forth</cite></td><td>Croaker Command (Frogs)</td><td>Video Game, 2022 &middot; Festive Vector</td></tr>
         </tbody>
       </table>
     </div>
 
-         ================= end parked Credits table ================= -->
-
-    <!-- Grouped by kind, so a single voice credit sits alongside stage work
-         and training instead of alone in a mostly empty table. -->
-    <div class="credit-groups">
-      <div>
-        <h3>Voice</h3>
-        <ul>
-          <li><cite>Sail Forth</cite></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Stage</h3>
-        <ul>
-          <li>Cabaret Roulette (mainstage)<span>Seattle Comedy Theater</span></li>
-          <li>Duos Open Mic<span>Unexpected Productions</span></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Training</h3>
-        <ul>
-          <li>Voice over with Drew Hobson</li>
-        </ul>
-      </div>
+    <h3 class="credits-heading">Theater &amp; Improv &middot; Ongoing</h3>
+    <div class="table-scroll">
+      <table class="credits">
+        <thead>
+          <tr><th>Project</th><th>Role</th><th>Company / Director</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cabaret Roulette</td><td>Host / Star / Tech</td><td>Seattle Comedy Theater &middot; dir. Hayley Bowyer &middot; 2025&ndash;present</td></tr>
+          <tr><td>Late For Work</td><td>Improviser / Host</td><td>Indie Improv Team &middot; 2025&ndash;present</td></tr>
+          <tr><td>Duos Open Mic</td><td>Improviser / Host</td><td>Unexpected Productions &middot; 2024&ndash;present</td></tr>
+        </tbody>
+      </table>
     </div>
+
+    <p class="credits-more">Selected credits, training, and special skills are in the full resume.</p>
 
     <div class="btn-row">
       <a class="btn" href="assets/resume.pdf" download>Download resume (PDF)</a>
