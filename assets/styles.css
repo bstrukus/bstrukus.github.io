@@ -146,8 +146,8 @@ nav .brand { color: var(--text); font-family: var(--serif); font-size: 1rem; mar
 .btn-ghost { background: transparent; color: var(--accent); }
 .btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-/* The .reel, .specs, .credits, and .gallery rules below style sections that
-   are currently commented out in the body. They look like dead CSS — they're
+/* The .reel, .specs, and .gallery rules below style sections that are
+   currently commented out in the body. They look like dead CSS — they're
    not, they're waiting. Leave them; uncommenting a section is then the
    only step. */
 
@@ -182,33 +182,42 @@ nav .brand { color: var(--text); font-family: var(--serif); font-size: 1rem; mar
 .specs li:not(:last-child)::after { content: "·"; margin-left: 0.7rem; opacity: 0.5; }
 
 /* ---------- Resume ---------- */
-.credits { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.95rem; }
+.credits-heading { font-size: 1.15rem; margin: 0 0 0.75rem; }
+
+/* Fixed layout with set column widths, so the Voiceover and Theater tables
+   line their columns up with each other like the PDF does. */
+.credits {
+  width: 100%; table-layout: fixed;
+  border-collapse: collapse; margin-bottom: 2.5rem; font-size: 0.95rem;
+}
+.credits th:nth-child(1) { width: 32%; }
+.credits th:nth-child(2) { width: 28%; }
 .credits th {
   text-align: left; font-weight: 500; font-size: 0.72rem;
   letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
-  padding-bottom: 0.6rem; border-bottom: 1px solid var(--line);
+  padding: 0 1.25rem 0.6rem 0; border-bottom: 1px solid var(--line);
 }
 .credits td { padding: 0.8rem 1.25rem 0.8rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-.credits td:last-child { color: var(--muted); padding-right: 0; }
+.credits td:last-child, .credits th:last-child { padding-right: 0; }
+.credits td:last-child { color: var(--muted); }
 .table-scroll { overflow-x: auto; }
+.credits-more { color: var(--muted); font-size: 0.9rem; margin: -0.75rem 0 1.5rem; }
 
-/* Grouped credits list (live). Headings match the table's column headers
-   above, so switching to the table later won't change the section's look. */
-.credit-groups {
-  display: grid;
-  gap: 1.75rem 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  margin-bottom: 2.25rem;
+/* Phones: three columns don't fit, so each row stacks into a small block —
+   project, then role, then company — instead of scrolling sideways. The
+   column headers are hidden visually but kept for screen readers. */
+@media (max-width: 600px) {
+  .credits, .credits tbody, .credits tr, .credits td { display: block; width: 100%; }
+  .credits thead {
+    position: absolute; width: 1px; height: 1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  .credits tbody { border-top: 1px solid var(--line); }
+  .credits tr { padding: 0.8rem 0; border-bottom: 1px solid var(--line); }
+  .credits td { padding: 0; border: 0; }
+  .credits td:first-child { font-weight: 500; }
+  .credits td:last-child { font-size: 0.85rem; margin-top: 0.15rem; }
 }
-.credit-groups h3 {
-  font-family: var(--sans); font-weight: 500; font-size: 0.72rem;
-  letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
-  padding-bottom: 0.6rem; border-bottom: 1px solid var(--line);
-  margin-bottom: 0.6rem;
-}
-.credit-groups ul { list-style: none; margin: 0; padding: 0; font-size: 0.95rem; }
-.credit-groups li { padding: 0.35rem 0; }
-.credit-groups li span { display: block; font-size: 0.85rem; color: var(--muted); }
 
 /* ---------- Gallery ---------- */
 .gallery {
