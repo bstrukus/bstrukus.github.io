@@ -122,8 +122,12 @@ nav .brand { color: var(--text); font-family: var(--serif); font-size: 1rem; mar
   display: grid; place-items: center;
   font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em;
 }
+/* The z-index is what actually puts the photo over the label. Without it,
+   ::after paints last and the "headshot.jpg" text shows through the photo.
+   If the image fails to load, the script in index.html hides it and the
+   label shows instead. */
 .headshot img {
-  position: relative;            /* sits on top of the placeholder label */
+  position: relative; z-index: 1;
   width: 100%; height: 100%;
   object-fit: cover;
 }
@@ -240,7 +244,8 @@ nav .brand { color: var(--text); font-family: var(--serif); font-size: 1rem; mar
   display: grid; place-items: center;
   font-size: 0.75rem; color: var(--muted);
 }
-.gallery img { position: relative; width: 100%; height: 100%; object-fit: cover; }
+/* z-index keeps each photo above its filename label; see .headshot img. */
+.gallery img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- Contact form ---------- */
 form { max-width: 34rem; display: grid; gap: 1.1rem; }
